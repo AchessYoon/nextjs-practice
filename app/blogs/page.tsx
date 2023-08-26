@@ -1,13 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './page.module.css'
+import Counter from './Counter'
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+  const j = await res.json()
+  j.abilities[0].ability.name
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
+        <Counter />
         <p>
-          Get started by editing&nbsp;
+          Bloblog-{j.abilities[0].ability.name}&nbsp;
           <code className={styles.code}>app/page.tsx</code>
         </p>
         <div>
